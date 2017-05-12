@@ -1,0 +1,30 @@
+{
+  "name": "stalitics",
+  "version": "1.0.0",
+  "description": "WDI Project 3",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmacauyag/WDI-45-Project_3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmacauyag/WDI-45-Project_3/issues"
+  },
+  "homepage": "https://github.com/dmacauyag/WDI-45-Project_3#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.8",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2"
+  }
+}
