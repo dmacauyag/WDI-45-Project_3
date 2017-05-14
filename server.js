@@ -10,12 +10,22 @@ const
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
   flash = require('connect-flash'),
-  passport = require('passport'),
-  port = 3000
+  passport = require('passport')
+
+// environment port
+const
+  port = 3000,
+  mongoConnectionString = 'mongodb://localhost/stalitics'
 
 // mongoose connection
-mongoose.connect('mongodb://localhost/stalitics', (err) => {
+mongoose.connect(mongoConnectionString, (err) => {
   console.log(err || "Connected to MongoDB (stalitics)")
+})
+
+// will store session information as a 'sessions' collection in MongoDB
+const store = new MongoDBStore ({
+  uri: mongoConnectionString,
+  collection: 'sessions'
 })
 
 // middleware
