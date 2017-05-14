@@ -36,6 +36,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(flash())
 
+// ejs configuration
+app.set('view engine', 'ejs')
+app.use(ejsLayouts)
+
 
 app.listen(port, (err) => {
   console.log(err || "Server listening on port:", port)
