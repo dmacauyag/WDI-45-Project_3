@@ -64,6 +64,7 @@ app.use(passport.session())
 app.use((req, res, next) => {
   app.locals.currentUser = req.user
   app.locals.isLoggedIn = !!req.user
+  next()
 })
 
 // static routes
