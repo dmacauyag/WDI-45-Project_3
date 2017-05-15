@@ -3,6 +3,8 @@ const
   app = express(),
   ejs = require('ejs'),
   ejsLayouts = require('express-ejs-layouts'),
+  ig = require('instagram-node').instagram(),
+  InstagramStrategy = require('passport-instagram').Strategy,
   mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
