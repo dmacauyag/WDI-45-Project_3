@@ -49,7 +49,7 @@ app.use(flash())
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 
-// session + passport middleware 
+// session + passport middleware
 app.use(session({
   secret: "It's a secret",
   cookie: {maxAge: 60000000},
