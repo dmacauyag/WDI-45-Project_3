@@ -10,7 +10,8 @@ const
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
   flash = require('connect-flash'),
-  passport = require('passport')
+  passport = require('passport'),
+  passportConfig = require('./config/passport.js')
 
 // environment port
 const
