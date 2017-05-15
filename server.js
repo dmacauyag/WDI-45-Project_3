@@ -11,7 +11,15 @@ const
   cookieParser = require('cookie-parser'),
   flash = require('connect-flash'),
   passport = require('passport'),
-  passportConfig = require('./config/passport.js')
+  passportConfig = require('./config/passport.js'),
+  Twitter = require('twitter')
+
+const twitterClient = new Twitter({
+  consumer_key: '',
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: ''
+})
 
 // environment port
 const
@@ -40,6 +48,23 @@ app.use(flash())
 // ejs configuration
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
+
+// session + passport middleware
+app.use(session({
+  secret: "It's a secret",
+  cookie: {maxAge: 60000000},
+  resave: true,
+  saveUninitialized: false,
+  store: store
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use((req, res, next) => {
+  app.locals.currentUser = req.user
+  app.locals.isLoggedIn = !!req.user
+})
 
 // static routes
 app.get('/', (req, res) => {
