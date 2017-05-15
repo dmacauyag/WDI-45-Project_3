@@ -3,8 +3,6 @@ const
   app = express(),
   ejs = require('ejs'),
   ejsLayouts = require('express-ejs-layouts'),
-  ig = require('instagram-node').instagram(),
-  InstagramStrategy = require('passport-instagram').Strategy,
   mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
@@ -38,14 +36,9 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(flash())
 
-//instagram access keys
-ig.use({ client_id: '8a00bbe7bb314a9b850121a7ca7b6b03',
-         client_secret: '383a52830da1463db4ca5a6b6d4659b7' });
-
 // ejs configuration
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
-
 
 app.listen(port, (err) => {
   console.log(err || "Server listening on port:", port)
