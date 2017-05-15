@@ -49,6 +49,23 @@ app.use(flash())
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 
+// session + passport 
+app.use(session({
+  secret: "It's a secret",
+  cookie: {maxAge: 60000000},
+  resave: true,
+  saveUninitialized: false,
+  store: store
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use((req, res, next) => {
+  app.locals.currentUser = req.user
+  app.locals.isLoggedIn = !!req.user
+})
+
 // static routes
 app.get('/', (req, res) => {
   res.render('index')
