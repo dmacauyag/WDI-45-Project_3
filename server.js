@@ -12,7 +12,8 @@ const
   flash = require('connect-flash'),
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
-  Twitter = require('twitter')
+  Twitter = require('twitter'),
+  userRoutes = require('./routes/users.js')
 
 const twitterClient = new Twitter({
   consumer_key: '',
@@ -66,18 +67,12 @@ app.use((req, res, next) => {
   app.locals.isLoggedIn = !!req.user
 })
 
-// static routes
+// static route
 app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.get('/login', (req, res) => {
-  res.render('login', {message: req.flash('loginMessage')})
-})
-
-app.get('/signup', (req, res) => {
-  res.render('signup', {message: req.flash('signupMessage')})
-})
+app.use('/', userRoutes)
 
 app.listen(port, (err) => {
   console.log(err || "Server listening on port:", port)
