@@ -120,6 +120,9 @@ a {
   color: black;
 }
 
+body > div > div.jumbotron.jumbotron-fluid {
+  border-radius: 0;
+}
 
 a:hover {
   text-decoration: none;
