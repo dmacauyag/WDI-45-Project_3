@@ -1,36 +1,27 @@
 <% include ../partials/header %>
 
-
 <div class="container">
   <div class="row">
     <!-- multiple columns -->
   </div><!-- closing .row -->
-
   <h2>FAVORITES</h2>
   <input type="text" id="favorite-input">
   <button type="button" class="button" id="add-favorite">Add Favorite</button>
 
   <ul id='favorites-list'>
-
+    <% user.local.favorite.forEach(function(f) { %>
+      <li id="<%= f._id %>">
+        <span><%= f.name %></span>
+        <button class="edit">Edit</button>
+        <button class="delete">X</button>
+      </li>
+    <% }) %>
   </ul>
 
   <script type="text/javascript">
     var $favoritesList = $('#favorites-list')
     var $favoritesInput = $('#favorite-input')
-    var $addFavorite = $('add-favorite')
-
-    // retrieve all the current user's favorites
-    var requestSettings = {
-      method: 'get',
-      url: '/users/:id/favorites'
-    }
-    $.ajax(requestSettings).done(function(d) {
-      var allFavorites = d
-      $favoritesList.html('')
-      allFavorites.forEach(function(f) {
-        appendFavorite(f)
-      })
-    })
+    var $addFavorite = $('#add-favorite')
 
     // event delegation for the delete favorites button
     $favoritesList.on('click', 'li button.delete', function() {
@@ -55,30 +46,59 @@
     $addFavorite.on('click', function() {
       var requestSettings = {
         method: 'post',
-        url: '/#/:id/favorites/',
+        url: '/favorites',
         data: JSON.stringify({
           name: $favoritesInput.val()
         }), contentType: 'application/json'
       }
-      $.ajax(requestSettings).done(function(newFavorite) {
-        console.log(newFavorite)
+      $.ajax(requestSettings).done(function(user) {
+        var newFavorite = user.local.favorite
+        appendFavorite(newFavorite)
       })
     })
 
     // function to append a new favorite to the favorites list
     function appendFavorite(favorite) {
-      var theLi = $('<li>').attr('id', favorite._id)
-      theLi.html(`<span>${favorite.body}</span>`)
+      $favoritesList.html('')
+      favorite.forEach(function(f) {
+        var theLi = $('<li>').attr('id', f._id)
+        theLi.html(`<span>${f.name}</span>`)
 
-      var editButton = $('<button>').addClass('edit')
-      editButton.text('Edit')
-      theLi.append(editButton)
+        var editButton = $('<button>').addClass('edit')
+        editButton.text('Edit')
+        theLi.append(editButton)
 
-      var deleteButton = $('<button>').addClass('delete')
-      deleteButton.text('X')
-      theLi.append(deleteButton)
-      $favoritesList.append(theLi)
+        var deleteButton = $('<button>').addClass('delete')
+        deleteButton.text('X')
+        theLi.append(deleteButton)
+        $favoritesList.append(theLi)
+      })
     }
+
+    // edit favorites form
+    var editForm = $('<div>').attr('id', 'edit-form')
+    editForm.append('<input type="text" class="edit-input">')
+    editForm.append('<button class="button">Update</button>')
+    editForm.hide()
+
+    // event listener for the update favorites button
+    $favoritesList.on('click', '#edit-form button', function() {
+      var fav_id = $(this).parent().parent().attr('id')
+      var updatedFavorite = $(this).prev().val()
+      var requestSettings = {
+        method: 'patch',
+        url: `/#/:id/favorites/${fav_id}`,
+        data: JSON.stringify({
+          name: updatedFavorite
+        }), contentType: 'application/json'
+      }
+      $.ajax(requestSettings).done(function(d) {
+        if (d.success) {
+          $(`#${id} span`).text(d.updatedTask.body)
+          editForm.slideUp()
+        }
+      })
+    })
 
   </script>
 
