@@ -1,0 +1,121 @@
+/* GLOBAL */
+
+body {
+  font-family: 'Raleway', sans-serif;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+h2 {
+  color: #A7F3FF;
+}
+
+/* NAVBAR */
+
+.navbar-custom {
+    color: white;
+    background-color: black;
+    opacity: .8;
+}
+
+.navbar .nav > li > a {
+  color: white;
+}
+
+.navbar .nav > li > a:hover {
+  text-decoration: none;
+  color: #A7F3FF;
+}
+
+/* FOOTER */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+}
+
+.title {
+  color: black;
+}
+
+.git {
+  margin-right: 2px;
+}
+
+.ot {
+  margin-left: 2px;
+}
+
+.col-sm-12 {
+ bottom: 0px;
+ margin-top: 55px;
+ margin-right: auto;
+ margin-left: auto;
+
+}
+
+#copy {
+  text-align: center;
+  background: black;
+  height: 100px;
+  color: white;
+  opacity: .8;
+}
+
+/* BLOG COLUMNS */
+
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  background: aquamarine;
+  opacity: .7;
+  width: 300px;
+  height: 200px;
+  margin: 20px 10px;
+}
+
+.form-control, .btn {
+  border-radius: 0;
+}
+
+.twitlitics {
+  margin-top: 5px;
+}
+
+.headline {
+  background: lightgrey;
+  width: 100%;
+  height: 100px;
+}
+
+.col-sm-3 {
+  height: 400px;
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+}
+
+/* LINKS */
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #A7F3FF;
+}
