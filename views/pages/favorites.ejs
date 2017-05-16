@@ -19,6 +19,19 @@
     var $favoritesInput = $('#favorite-input')
     var $addFavorite = $('add-favorite')
 
+    // retrieve all the current user's favorites
+    var requestSettings = {
+      method: 'get',
+      url: '/users/:id/favorites'
+    }
+    $.ajax(requestSettings).done(function(d) {
+      var allFavorites = d
+      $favoritesList.html('')
+      allFavorites.forEach(function(f) {
+        appendFavorite(f)
+      })
+    })
+
     // event delegation for the delete favorites button
     $favoritesList.on('click', 'li button.delete', function() {
       var id = $(this).parent().attr('id')
@@ -37,6 +50,35 @@
       editForm.slideDown()
       $('.edit-input').val($(this).prev().text())
     })
+
+    // event listener to add a favorites
+    $addFavorite.on('click', function() {
+      var requestSettings = {
+        method: 'post',
+        url: '/#/:id/favorites/',
+        data: JSON.stringify({
+          name: $favoritesInput.val()
+        }), contentType: 'application/json'
+      }
+      $.ajax(requestSettings).done(function(newFavorite) {
+        console.log(newFavorite)
+      })
+    })
+
+    // function to append a new favorite to the favorites list
+    function appendFavorite(favorite) {
+      var theLi = $('<li>').attr('id', favorite._id)
+      theLi.html(`<span>${favorite.body}</span>`)
+
+      var editButton = $('<button>').addClass('edit')
+      editButton.text('Edit')
+      theLi.append(editButton)
+
+      var deleteButton = $('<button>').addClass('delete')
+      deleteButton.text('X')
+      theLi.append(deleteButton)
+      $favoritesList.append(theLi)
+    }
 
   </script>
 
