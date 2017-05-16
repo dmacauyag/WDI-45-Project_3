@@ -100,6 +100,10 @@ footer {
   height: 100px;
 }
 
+.jumbotron .jumbotron-fluid{
+  border-radius: 0px;
+}
+
 .col-sm-3 {
   height: 400px;
   text-align: center;
