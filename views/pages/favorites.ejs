@@ -7,7 +7,38 @@
   </div><!-- closing .row -->
 
   <h2>FAVORITES</h2>
-  <p>Actual content goes here. It will span the full width.</p>
+  <input type="text" id="favorite-input">
+  <button type="button" class="button" id="add-favorite">Add Favorite</button>
+
+  <ul id='favorites-list'>
+
+  </ul>
+
+  <script type="text/javascript">
+    var $favoritesList = $('#favorites-list')
+    var $favoritesInput = $('#favorite-input')
+    var $addFavorite = $('add-favorite')
+
+    // event delegation for the delete favorites button
+    $favoritesList.on('click', 'li button.delete', function() {
+      var id = $(this).parent().attr('id')
+      var requestSettings = {
+        method: 'delete',
+        url: '/#/:id/favorites/' + id
+      }
+      $.ajax(requestSettings).done(function(d) {
+        $('#' + id).remove()
+      })
+    })
+
+    // event delegation for the edit favorites button
+    $favoritesList.on('click', 'li button.edit', function() {
+      $(this).parent().append(editForm)
+      editForm.slideDown()
+      $('.edit-input').val($(this).prev().text())
+    })
+
+  </script>
 
   <div class="row">
     <!-- multiple columns -->
