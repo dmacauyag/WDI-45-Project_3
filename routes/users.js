@@ -40,9 +40,9 @@ userRouter.get('/logout', isLoggedIn, (req, res) => {
 })
 
 userRouter.route('users/:id/favorites')
-  .get(isLoggedIn, favoriteController.index)
+  .get(favoriteController.index)
   .post(favoriteController.create)
-// 
+//
 // userRouter.route('users/:id/favorites/:favId')
 //   .get(favoriteController.show)
 //   .patch(favoriteController.update)
