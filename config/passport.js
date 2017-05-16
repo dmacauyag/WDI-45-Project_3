@@ -15,19 +15,20 @@ passport.deserializeUser((id, done) => {
 
 // LOCAL SIGNUP
 passport.use('local-signup', new LocalStrategy({
-  usernameField: 'user_name',
+  usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
-}, (req, user_name, password, done) => {
-  User.findOne({'local.user_name': user_name}, (err, user) => {
+}, (req, email, password, done) => {
+  User.findOne({'local.email': email}, (err, user) => {
     if(err) return done(err)
     if(user) return done(null, false, req.flash('signupMessage', 'That username already exists.'))
     var newUser = new User()
+    console.log(req.body);
     newUser.local.name = req.body.name
-    newUser.local.user_name = user_name
+    newUser.local.user_name = req.body.user_name
     newUser.local.email = req.body.email
     newUser.local.password = newUser.generateHash(password)
-    newUser.save((err) => {
+    newUser.save((err, newUser) => {
       if(err) throw err
       return done(null, newUser, null)
     })
@@ -36,11 +37,11 @@ passport.use('local-signup', new LocalStrategy({
 
 // LOCAL SIGNIN
 passport.use('local-login', new LocalStrategy({
-  usernameField: 'user_name',
+  usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
-}, (req, user_name, password, done) => {
-  User.findOne({'local.user_name': user_name}, (err, user) => {
+}, (req, email, password, done) => {
+  User.findOne({'local.email': email}, (err, user) => {
     if(err) return done(err)
     if(!user) return done(null, false, req.flash('loginMessage', 'Invalid username or password.'))
     if(!user.validPassword(password)) return done(null, false, req.flash('loginMessage', 'Invalid username or password.'))

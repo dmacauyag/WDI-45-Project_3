@@ -3,9 +3,9 @@ const
   bcrypt = require('bcrypt-nodejs'),
   userSchema = new mongoose.Schema({
     local: {
-      name: String,
-      user_name: {type: String, unique: true,require: true},
-      email: {type: String, lowercase: true, unique:true,require: true},
+      name: {type: String, required: true},
+      user_name: {type: String, unique: true, required: true},
+      email: {type: String, lowercase: true, unique: true, required: true},
       password: String
     }
   })
@@ -17,7 +17,7 @@ userSchema.methods.generateHash = function(password) {
 
 // use when login
 // finds if password is valid
-userSchema.methods.generateHash = function(password) {
+userSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.local.password)
 }
 

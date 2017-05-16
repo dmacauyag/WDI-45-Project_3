@@ -22,13 +22,17 @@ userRouter.route('/signup')
   }))
 
 
-userRouter.route('/profile')
-  .get((req, res) => {
-    res.send('profile')
-  })
+userRouter.get('/profile', isLoggedIn, (req, res) => {
+  res.render('users/profile', {user: req.user})
+})
 
-function isloggedIn(req, res, next) {
-  if (req.isAuthenicated()) return next()
+userRouter.get('/logout', isLoggedIn, (req, res) => {
+  req.logout()
+  res.redirect('/')
+})
+
+function isLoggedIn(req, res, next) {
+  if(req.isAuthenticated()) return next()
   res.redirect('/')
 }
 
