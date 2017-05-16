@@ -100,7 +100,7 @@ footer {
   height: 100px;
 }
 
-.jumbotron .jumbotron-fluid{
+.jumbotron .jumbotron-fluid {
   border-radius: 0px;
 }
 
@@ -119,6 +119,7 @@ footer {
 a {
   color: black;
 }
+
 
 a:hover {
   text-decoration: none;
