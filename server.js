@@ -12,13 +12,13 @@ const
   flash = require('connect-flash'),
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
-  Twitter = require('twitter'),
+  Twitter = require('twit'),
   userRoutes = require('./routes/users.js')
 
 const twitterClient = new Twitter({
   consumer_key: 'process.env.TWITTER_CONSUMER_KEY',
   consumer_secret: 'process.env.TWITTER_CONSUMER_SECRET',
-  access_token_key: 'process.env.TWITTER_ACCESS_TOKEN',
+  access_token: 'process.env.TWITTER_ACCESS_TOKEN',
   access_token_secret: 'process.env.TWITTER_ACCESS_TOKEN_SECRET'
 })
 
