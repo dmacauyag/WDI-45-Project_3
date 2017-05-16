@@ -1,12 +1,16 @@
 const
   mongoose = require('mongoose'),
   bcrypt = require('bcrypt-nodejs'),
+  favoriteSchema = mongoose.Schema({
+    name: String
+  }),
   userSchema = new mongoose.Schema({
     local: {
       name: {type: String, required: true},
       user_name: {type: String, unique: true, required: true},
       email: {type: String, lowercase: true, unique: true, required: true},
-      password: String
+      password: String,
+      favorite: [favoriteSchema]
     }
   })
 
