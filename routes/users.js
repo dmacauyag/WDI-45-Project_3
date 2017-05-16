@@ -5,11 +5,11 @@ const
 
 userRouter.route('/login')
   .get((req, res) => {
-    res.render('login', {message: req.flash('loginMessage')})
+    res.render('pages/login', {message: req.flash('loginMessage')})
   })
   .post(passport.authenticate('local-login', {
     successRedirect: '/profile',
-    failureRedirect: '/login'
+    failureRedirect: 'pages/login'
   }))
 
 userRouter.route('/signup')
@@ -23,12 +23,16 @@ userRouter.route('/signup')
 
 
 userRouter.get('/profile', isLoggedIn, (req, res) => {
-  res.render('users/profile', {user: req.user})
+  res.render('pages/profile', {user: req.user})
 })
 
 userRouter.get('/logout', isLoggedIn, (req, res) => {
   req.logout()
   res.redirect('/')
+})
+
+userRouter.get('/favorites', isLoggedIn, (req, res) => {
+  res.render('pages/favorites')
 })
 
 function isLoggedIn(req, res, next) {
