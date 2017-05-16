@@ -2,15 +2,16 @@ const
   express = require('express'),
   passport = require('passport'),
   userRouter = express.Router(),
-  User = require('../models/User.js')
+  User = require('../models/User.js'),
+  favoriteController = require('../controllers/favorites.js')
 
 userRouter.route('/login')
   .get((req, res) => {
     res.render('pages/login', {message: req.flash('loginMessage')})
   })
   .post(passport.authenticate('local-login', {
-    successRedirect: '/profile',
-    failureRedirect: 'pages/login'
+    successRedirect: '/',
+    failureRedirect: '/login'
   }))
 
 userRouter.route('/signup')
@@ -18,7 +19,7 @@ userRouter.route('/signup')
     res.render('pages/signup', {message: req.flash('signupMessage')})
   })
   .post(passport.authenticate('local-signup', {
-    successRedirect: '/profile',
+    successRedirect: '/',
     failureRedirect: '/signup'
   }))
 
@@ -29,7 +30,6 @@ userRouter.get('/profile', isLoggedIn, (req, res) => {
 
 userRouter.get('/users/:id', (req, res) => {
   User.findById(req.params.id, (err, user) => {
-    console.log(user)
     res.render('pages/index', {user: user})
   })
 })
@@ -40,8 +40,13 @@ userRouter.get('/logout', isLoggedIn, (req, res) => {
 })
 
 userRouter.route('users/:id/favorites')
-  .get(isLoggedIn, )
-  .post()
+  .get(isLoggedIn, favoriteController.index)
+  .post(favoriteController.create)
+// 
+// userRouter.route('users/:id/favorites/:favId')
+//   .get(favoriteController.show)
+//   .patch(favoriteController.update)
+//   .delete(favoriteController.destory)
 
 userRouter.get('/featured', (req, res) => {
   res.render('pages/featured')
