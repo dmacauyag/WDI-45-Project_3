@@ -70,7 +70,7 @@ app.use((req, res, next) => {
 
 // static route
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('pages/index')
 })
 
 app.use('/', userRoutes)
