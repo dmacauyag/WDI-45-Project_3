@@ -80,6 +80,31 @@
       $favoritesList.append(theLi)
     }
 
+    // edit favorites form
+    var editForm = $('<div>').attr('id', 'edit-form')
+    editForm.append('<input type="text" class="edit-input">')
+    editForm.append('<button class="button">Update</button>')
+    editForm.hide()
+
+    // event listener for the update favorites button
+    $favoritesList.on('click', '#edit-form button', function() {
+      var fav_id = $(this).parent().parent().attr('id')
+      var updatedFavorite = $(this).prev().val()
+      var requestSettings = {
+        method: 'patch',
+        url: `/#/:id/favorites/${fav_id}`,
+        data: JSON.stringify({
+          name: updatedFavorite
+        }), contentType: 'application/json'
+      }
+      $.ajax(requestSettings).done(function(d) {
+        if (d.success) {
+          $(`#${id} span`).text(d.updatedTask.body)
+          editForm.slideUp()
+        }
+      })
+    })
+
   </script>
 
   <div class="row">
