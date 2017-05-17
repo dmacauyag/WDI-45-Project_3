@@ -29,7 +29,7 @@
     if(f.tweet_volume > 0) {
       var $theLi = $('<li><br>')
       $theLi.append(`<span>${f.tweet_volume} </span>`)
-      $theLi.append(`<span><a href="${f.url}">${f.name}</a></span>`)
+      $theLi.append(`<span><a href="/users/${f.name}">${f.name}</a></span>`)
       $searchList.append($theLi)
     }
   })
