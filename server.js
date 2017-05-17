@@ -35,6 +35,11 @@ mongoose.connect(mongoConnectionString, (err) => {
   console.log(err || "Connected to MongoDB (stalitics)")
 })
 
+// socket io connection
+io.on('connection', (socket) => {
+  console.log("Socket connection established")
+})
+
 // will store session information as a 'sessions' collection in MongoDB
 const store = new MongoDBStore ({
   uri: mongoConnectionString,
