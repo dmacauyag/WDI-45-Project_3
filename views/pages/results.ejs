@@ -3,19 +3,23 @@
 <div class="container">
   <div class="row">
     <% if(favorite.name) { %>
-      <h2><%= favorite.name %></h2>
+      <h1><%= favorite.name %></h1>
     <% } else { %>
-      <h2><%= favorite %></h2>
+      <h1><%= favorite %></h1>
     <% } %>
     <div class="col-sm-6 blog">
       <h2>RELATED POSTS</h2>
-      <ul>
+      <br>
+      <ul class="related">
         <% data.statuses.forEach(function(f) { %>
-          <li>
+          <li class="related">
             <img src="<%= f.user.profile_image_url %>">
-            <span><%= f.user.name %></span><br>
+            <span><h4><%= f.user.name %></h4></span><br>
             <span><%= f.text %></span>
           </li>
+          <hr>
+          <br>
+          <br>
         <% }) %>
       </ul>
     </div>
@@ -23,9 +27,9 @@
     <div class="col-sm-6 projects">
       <h2>MOST RETWEETED</h2>
       <ul id="retweet-list">
-
       </ul>
 
+      <div class="retweeted">
       <script type="text/javascript">
         var retrievedData = <%- JSON.stringify(data) %>
         var $retweetList = $('#retweet-list')
@@ -36,14 +40,14 @@
 
         retrievedData.statuses.forEach(function(f) {
           if(f.retweet_count > 0) {
-            var $theLi = $('<li>')
-            $theLi.append(`<span>${f.retweet_count}</span><br>`)
-            $theLi.append(`<span>${f.text}</span>`)
+            var $theLi = $('<li class="retweet"><br><h4>RETWEETS</h4>')
+            $theLi.append(`<span>${f.retweet_count}</span><br><br>`)
+            $theLi.append(`<span>${f.text}</span><hr>`)
             $retweetList.append($theLi)
           }
         })
       </script>
-
+    </div>
     </div>
   </div>
 </div>
