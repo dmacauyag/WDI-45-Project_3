@@ -21,7 +21,18 @@ module.exports = {
   },
 
   show: (req, res) => {
-    // placeholder for the favorites show page
+    User.findById(req.params.id, (err, user) => {
+      if(err) return console.log(err)
+      var favoritesArray = user.local.favorite
+      var selectedFavorite = ""
+      for( i = favoritesArray.length - 1; i>=0; i--) {
+        if(favoritesArray[i]._id == req.params.favId) {
+          selectedFavorite = favoritesArray[i]
+        }
+      }
+      console.log(selectedFavorite);
+      res.render('pages/results', {favorite: selectedFavorite})
+    })
   },
 
   update: (req, res) => {

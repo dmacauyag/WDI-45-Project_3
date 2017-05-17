@@ -13,13 +13,16 @@ const
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
   Twitter = require('twit'),
-  userRoutes = require('./routes/users.js')
+  userRoutes = require('./routes/users.js'),
+  server = require('http').Server(app),
+  io = require('socket.io')(server)
 
 const twitterClient = new Twitter({
   consumer_key: 'process.env.TWITTER_CONSUMER_KEY',
   consumer_secret: 'process.env.TWITTER_CONSUMER_SECRET',
   access_token: 'process.env.TWITTER_ACCESS_TOKEN',
-  access_token_secret: 'process.env.TWITTER_ACCESS_TOKEN_SECRET'
+  access_token_secret: 'process.env.TWITTER_ACCESS_TOKEN_SECRET',
+  timeout_ms: 60*1000
 })
 
 // environment port
@@ -30,6 +33,11 @@ const
 // mongoose connection
 mongoose.connect(mongoConnectionString, (err) => {
   console.log(err || "Connected to MongoDB (stalitics)")
+})
+
+// socket io connection
+io.on('connection', (socket) => {
+  console.log("Socket connection established")
 })
 
 // will store session information as a 'sessions' collection in MongoDB

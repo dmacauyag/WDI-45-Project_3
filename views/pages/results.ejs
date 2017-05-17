@@ -1,15 +1,8 @@
-<% include header %>
-
-  <body>
-    <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">Username</h1>
-    <p class="lead">I'm a badass</p>
-  </div>
-</div>
+<% include ../partials/header %>
 
 <div class="container">
   <div class="row">
+    <h2><%= favorite.name %></h2>
     <div class="col-sm-6 blog">
       <h2>RELATED POSTS</h2>
       <p>Actual content goes here. It will span the full width.</p>
@@ -26,4 +19,4 @@
   </div><!-- closing .row -->
 </div><!-- closing .container -->
 
-<% include footer %>
+<% include ../partials/footer %>
