@@ -28,7 +28,7 @@ const twitterClient = new Twitter({
 
 // environment port
 const
-  port = 3000,
+  PORT = process.env.PORT || 3000,
   mongoConnectionString = process.env.MONGODB_URL || 'mongodb://localhost/twitlitics'
 
 // mongoose connection
@@ -84,6 +84,6 @@ app.get('/', (req, res) => {
 
 app.use('/', userRoutes)
 
-app.listen(port, (err) => {
-  console.log(err || "Server listening on port:", port)
+app.listen(PORT, (err) => {
+  console.log(err || "Server listening on port:", PORT)
 })
