@@ -31,7 +31,19 @@ module.exports = {
         }
       }
       console.log(selectedFavorite);
-      res.render('pages/results', {favorite: selectedFavorite})
+      console.log(selectedFavorite.name);
+
+
+      //  search twitter for all tweets containing the word 'banana' since July 11, 2011
+      twitterClient.get('search/tweets', { q: 'selectedFavorite.name since:2011-07-11', count: 100 }, (err, data, response) => {
+        console.log(data)
+        res.render('pages/results', {data: data})
+
+      })
+
+
+
+      // res.render('pages/results', {favorite: selectedFavorite})
     })
   },
 
