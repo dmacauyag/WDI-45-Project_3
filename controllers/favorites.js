@@ -33,7 +33,6 @@ module.exports = {
       }
 
       twitterClient.get('search/tweets', { q: selectedFavorite.name, count: 100 }, (err, data, response) => {
-        console.log(data)
         res.render('pages/results', {data: data, favorite: selectedFavorite})
       })
     })
