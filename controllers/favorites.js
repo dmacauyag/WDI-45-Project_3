@@ -27,10 +27,10 @@ module.exports = {
       var selectedFavorite = ""
       for( i = favoritesArray.length - 1; i>=0; i--) {
         if(favoritesArray[i]._id == req.params.favId) {
-          favoritesArray[i].name = req.body.name
           selectedFavorite = favoritesArray[i]
         }
       }
+      console.log(selectedFavorite);
       res.render('pages/results', {favorite: selectedFavorite})
     })
   },
