@@ -2,7 +2,11 @@
 
 <div class="container">
   <div class="row">
-    <h2><%= favorite.name %></h2>
+    <% if(favorite.name) { %>
+      <h2><%= favorite.name %></h2>
+    <% } else { %>
+      <h2><%= favorite %></h2>
+    <% } %>
     <div class="col-sm-6 blog">
       <h2>RELATED POSTS</h2>
       <ul>
@@ -13,7 +17,7 @@
         <% }) %>
       </ul>
     </div>
-    
+
     <div class="col-sm-6 projects">
       <h2>MOST RETWEETED</h2>
       <ul>
