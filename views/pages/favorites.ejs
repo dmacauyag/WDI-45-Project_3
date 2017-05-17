@@ -26,13 +26,14 @@
 
     // event delegation for the delete favorites button
     $favoritesList.on('click', 'li button.delete', function() {
-      var id = $(this).parent().attr('id')
+      var favId = $(this).parent().attr('id')
       var requestSettings = {
         method: 'delete',
-        url: '/#/:id/favorites/' + id
+        url: `/users/${currentUserId}/favorites/${favId}`
       }
       $.ajax(requestSettings).done(function(d) {
-        $('#' + id).remove()
+        console.log(d)
+        $('#' + favId).remove()
       })
     })
 
@@ -45,7 +46,6 @@
 
     // event listener to add a favorites
     $addFavorite.on('click', function() {
-      console.log(currentUserId);
       var requestSettings = {
         method: 'post',
         url: `/users/${currentUserId}/favorites`,
@@ -57,6 +57,7 @@
         var newFavorite = user.local.favorite
         appendFavorite(newFavorite)
       })
+      $favoritesInput.val("") 
     })
 
     // function to append a new favorite to the favorites list

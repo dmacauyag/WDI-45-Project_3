@@ -42,11 +42,11 @@ userRouter.get('/logout', isLoggedIn, (req, res) => {
 userRouter.route('/users/:id/favorites')
   .get(favoriteController.index)
   .post(favoriteController.create)
-//
-// userRouter.route('users/:id/favorites/:favId')
-//   .get(favoriteController.show)
-//   .patch(favoriteController.update)
-//   .delete(favoriteController.destory)
+
+userRouter.route('/users/:id/favorites/:favId')
+  .get(favoriteController.show)
+  .patch(favoriteController.update)
+  .delete(favoriteController.destroy)
 
 userRouter.get('/featured', (req, res) => {
   res.render('pages/featured')

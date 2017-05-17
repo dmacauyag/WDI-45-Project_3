@@ -31,7 +31,14 @@ module.exports = {
   destroy: (req, res) => {
     User.findById(req.params.id, (err, user) => {
       if(err) console.log(err)
-
+      var favoritesArray = user.local.favorite
+      for( i = favoritesArray.length - 1; i>=0; i--) {
+        if(favoritesArray[i]._id == req.params.favId) favoritesArray.splice(i,1)
+      }
+      user.save((err) => {
+        if(err) return console.log(err)
+        res.json(user)
+      })
     })
   }
 }
