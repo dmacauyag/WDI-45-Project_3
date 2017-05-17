@@ -2,14 +2,48 @@
 
 <div class="container">
   <div class="row">
-    <h2><%= favorite.name %></h2>
+    <% if(favorite.name) { %>
+      <h2><%= favorite.name %></h2>
+    <% } else { %>
+      <h2><%= favorite %></h2>
+    <% } %>
     <div class="col-sm-6 blog">
       <h2>RELATED POSTS</h2>
-      <p>Actual content goes here. It will span the full width.</p>
+      <ul>
+        <% data.statuses.forEach(function(f) { %>
+          <li>
+            <img src="<%= f.user.profile_image_url %>">
+            <span><%= f.user.name %></span><br>
+            <span><%= f.text %></span>
+          </li>
+        <% }) %>
+      </ul>
     </div>
+
     <div class="col-sm-6 projects">
       <h2>MOST RETWEETED</h2>
-      <p>Actual content goes here. It will span the full width.</p>
+      <ul id="retweet-list">
+
+      </ul>
+
+      <script type="text/javascript">
+        var retrievedData = <%- JSON.stringify(data) %>
+        var $retweetList = $('#retweet-list')
+
+        retrievedData.statuses.sort(function(a, b) {
+          return parseFloat(b.retweet_count) - parseFloat(a.retweet_count)
+        })
+
+        retrievedData.statuses.forEach(function(f) {
+          if(f.retweet_count > 0) {
+            var $theLi = $('<li>')
+            $theLi.append(`<span>${f.retweet_count}</span><br>`)
+            $theLi.append(`<span>${f.text}</span>`)
+            $retweetList.append($theLi)
+          }
+        })
+      </script>
+
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 const
-  User = require('../models/User.js')
+  User = require('../models/User.js'),
+  twitterClient = require('../config/twit.js')
 
 module.exports = {
   index: (req, res) => {
@@ -30,8 +31,11 @@ module.exports = {
           selectedFavorite = favoritesArray[i]
         }
       }
-      console.log(selectedFavorite);
-      res.render('pages/results', {favorite: selectedFavorite})
+
+      twitterClient.get('search/tweets', { q: selectedFavorite.name, count: 100 }, (err, data, response) => {
+        console.log(data)
+        res.render('pages/results', {data: data, favorite: selectedFavorite})
+      })
     })
   },
 

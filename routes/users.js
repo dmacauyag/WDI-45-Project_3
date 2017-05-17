@@ -3,7 +3,8 @@ const
   passport = require('passport'),
   userRouter = express.Router(),
   User = require('../models/User.js'),
-  favoriteController = require('../controllers/favorites.js')
+  favoriteController = require('../controllers/favorites.js'),
+  twitterClient = require('../config/twit.js')
 
 userRouter.route('/login')
   .get((req, res) => {
@@ -26,6 +27,13 @@ userRouter.route('/signup')
 
 userRouter.get('/profile', isLoggedIn, (req, res) => {
   res.render('pages/profile', {user: req.user})
+})
+
+userRouter.get('/users/:query', (req, res) => {
+  console.log(req.params.query)
+  twitterClient.get('search/tweets', { q: req.params.query, count: 100 }, (err, data, response) => {
+    res.render('pages/results', {data: data, favorite: req.params.query})
+  })
 })
 
 userRouter.get('/users/:id', (req, res) => {
@@ -53,11 +61,14 @@ userRouter.get('/featured', (req, res) => {
 })
 
 userRouter.get('/tweets', (req, res) => {
-  res.render('pages/tweets')
+    res.render('pages/tweets')
 })
 
 userRouter.get('/hashtags', (req, res) => {
-  res.render('pages/hashtags')
+  twitterClient.get('trends/place', {id: 2442047}, (err, data, response) => {
+    if(err) {console.log(err)}
+    res.render('pages/hashtags', {data: data})
+  })
 })
 
 function isLoggedIn(req, res, next) {
