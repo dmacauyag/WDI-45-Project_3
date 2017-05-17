@@ -61,11 +61,14 @@ userRouter.get('/featured', (req, res) => {
 })
 
 userRouter.get('/tweets', (req, res) => {
-  res.render('pages/tweets')
+    res.render('pages/tweets')
 })
 
 userRouter.get('/hashtags', (req, res) => {
-  res.render('pages/hashtags')
+  twitterClient.get('trends/place', {id: 2442047}, (err, data, response) => {
+    if(err) {console.log(err)}
+    res.render('pages/hashtags', {data: data})
+  })
 })
 
 function isLoggedIn(req, res, next) {
