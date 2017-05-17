@@ -11,7 +11,7 @@
   <ul id='favorites-list'>
     <% user.local.favorite.forEach(function(f) { %>
       <li id="<%= f._id %>">
-        <span><%= f.name %></span>
+        <a href="#"><%= f.name %></a>
         <button class="edit">Edit</button>
         <button class="delete">X</button>
       </li>
@@ -57,7 +57,7 @@
         var newFavorite = user.local.favorite
         appendFavorite(newFavorite)
       })
-      $favoritesInput.val("") 
+      $favoritesInput.val("")
     })
 
     // function to append a new favorite to the favorites list
@@ -65,7 +65,7 @@
       $favoritesList.html('')
       favorite.forEach(function(f) {
         var theLi = $('<li>').attr('id', f._id)
-        theLi.html(`<span>${f.name}</span>`)
+        theLi.html(`<a href="#">${f.name}</a>`)
 
         var editButton = $('<button>').addClass('edit')
         editButton.text('Edit')
@@ -97,7 +97,7 @@
       }
       $.ajax(requestSettings).done(function(d) {
         if (d.success) {
-          $(`#${id} span`).text(d.updatedTask.body)
+          $(`#${id} a`).text(d.updatedTask.body)
           editForm.slideUp()
         }
       })
