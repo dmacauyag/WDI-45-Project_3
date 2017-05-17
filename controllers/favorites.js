@@ -25,7 +25,21 @@ module.exports = {
   },
 
   update: (req, res) => {
-
+    User.findById(req.params.id, (err, user) => {
+      if(err) console.log(err)
+      var favoritesArray = user.local.favorite
+      var updatedFavorite = ""
+      for( i = favoritesArray.length - 1; i>=0; i--) {
+        if(favoritesArray[i]._id == req.params.favId) {
+          favoritesArray[i].name = req.body.name
+          updatedFavorite = favoritesArray[i]
+        }
+      }
+      user.save((err) => {
+        if(err) return console.log(err)
+        res.json({success: true, updatedTask: updatedFavorite.name})
+      })
+    })
   },
 
   destroy: (req, res) => {
@@ -41,4 +55,5 @@ module.exports = {
       })
     })
   }
+
 }
