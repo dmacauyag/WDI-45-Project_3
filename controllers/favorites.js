@@ -31,7 +31,7 @@ module.exports = {
   destroy: (req, res) => {
     User.findById(req.params.id, (err, user) => {
       if(err) console.log(err)
-      
+
     })
   }
 }

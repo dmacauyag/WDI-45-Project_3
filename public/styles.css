@@ -13,6 +13,25 @@ html {
 
 h2 {
   color: #A7F3FF;
+  text-align: center;
+}
+
+.btn .btn-info .btn-lg {
+  border-radius: 0;
+  background-color: lightgrey;
+  border-color: lightgrey;
+}
+
+.btn .btn-primary .btn-lg {
+  border-radius: 0;
+  background-color: lightgrey;
+  border-color: lightgrey;
+}
+
+body > div > div > form > button {
+  border-radius: 0;
+  background-color: lightgrey;
+  border-color: lightgrey;
 }
 
 /* NAVBAR */
@@ -100,9 +119,10 @@ footer {
   height: 100px;
 }
 
-.jumbotron .jumbotron-fluid {
+.jumbotron {
   border-radius: 0px;
 }
+
 
 .col-sm-3 {
   height: 400px;
@@ -127,4 +147,8 @@ body > div > div.jumbotron.jumbotron-fluid {
 a:hover {
   text-decoration: none;
   color: #A7F3FF;
+}
+
+body > div > div > form > div:nth-child(3) > input {
+  background-color: white;
 }

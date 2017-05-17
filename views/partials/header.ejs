@@ -5,7 +5,7 @@
   <meta charset="utf-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <title>TWITLITICS</title>
 </head>
@@ -28,8 +28,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/">My Profile</a></li>
-        <li><a href="favorites">Favorites</a></li>
+        <li><a href="profile">My Profile</a></li>
+        <% if(isLoggedIn) { %>
+          <li><a href="users/<%= currentUser.id %>/favorites">Favorites</a></li>
+        <% } %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
