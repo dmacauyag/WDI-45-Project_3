@@ -140,13 +140,10 @@ a {
   color: black;
 }
 
-<<<<<<< HEAD
 body > div > div.jumbotron.jumbotron-fluid {
   border-radius: 0;
 }
 
-=======
->>>>>>> 9a379a38f71b4239987f2c5a489c391fdf8ceb56
 a:hover {
   text-decoration: none;
   color: #A7F3FF;
