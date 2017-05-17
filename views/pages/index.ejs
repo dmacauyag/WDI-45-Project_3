@@ -5,19 +5,24 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
-        <a href="favorites" class="ot"><img class="pic" src="/images/heart.png"></a>
+        <% if(isLoggedIn){ %>
+          <a href="/users/<%= currentUser.id %>/favorites" class="ot"><img  class="pic" src="/images/heart.png"></a>
+          <a href="favorites"><p class="pictag">FAVORITES</a></p>
+        <%  } else { %>
+        <a href="/login" class="ot"><img  class="pic" src="/images/heart.png"></a>
         <a href="favorites"><p class="pictag">FAVORITES</a></p>
+        <% } %>
       </div>
       <div class="col-sm-3">
         <a href="featured" class="ot"><img class="pic" src="/images/user.png"></a>
         <a href="featured"><p class="pictag">FEATURED USERS</a></p>
       </div>
       <div class="col-sm-3">
-        <a href="tweets" class="ot"><img class="pic" src="/images/twitter.gif"></a>
+        <a href="/tweets" class="ot"><img class="pic" src="/images/twitter.gif"></a>
         <a href="tweets"><p class="pictag">TOP TWEETS</a></p>
       </div>
       <div class="col-sm-3">
-          <a href="hashtags" class="ot"><img class="pic" src="/images/hashtag.png"></a>
+          <a href="/hashtags" class="ot"><img class="pic" src="/images/hashtag.png"></a>
         <a href="hashtags"><p class="pictag">TOP HASHTAGS</a></p>
       </div>
     </div>

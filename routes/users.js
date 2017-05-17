@@ -29,8 +29,7 @@ userRouter.get('/profile', isLoggedIn, (req, res) => {
   res.render('pages/profile', {user: req.user})
 })
 
-userRouter.get('/users/:query', (req, res) => {
-  console.log(req.params.query)
+userRouter.get('/search/:query', (req, res) => {
   twitterClient.get('search/tweets', { q: req.params.query, count: 100 }, (err, data, response) => {
     res.render('pages/results', {data: data, favorite: req.params.query})
   })

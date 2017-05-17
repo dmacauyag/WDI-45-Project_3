@@ -7,7 +7,10 @@
   </div><!-- closing .row -->
 
   <h2>TOP HASHTAGS</h2>
-  <p>Actual content goes here. It will span the full width.</p>
+    <ul style="list-style: none;" id="tweet-volume-list">
+
+    </ul>
+
 
   <p><% data[0].trends.forEach(function(t){ %>
       <li>
@@ -20,5 +23,23 @@
     <!-- multiple columns -->
   </div><!-- closing .row -->
 </div><!-- closing .container -->
+
+<script type="text/javascript">
+  var retrievedData = <%- JSON.stringify(data[0]) %>
+  var $searchList = $('#tweet-volume-list')
+
+  retrievedData.trends.sort(function(a, b) {
+    return parseFloat(b.tweet_volume) - parseFloat(a.tweet_volume)
+  })
+
+  retrievedData.trends.forEach(function(f) {
+    if(f.tweet_volume != null) {
+      var $theLi = $('<li><br>')
+      $theLi.append(`<span>${f.tweet_volume} </span>`)
+      $theLi.append(`<span><a href="/search/${f.name}">${f.name}</a></span>`)
+      $searchList.append($theLi)
+    }
+  })
+</script>
 
 <% include ../partials/footer %>
