@@ -86,18 +86,19 @@
 
     // event listener for the update favorites button
     $favoritesList.on('click', '#edit-form button', function() {
-      var fav_id = $(this).parent().parent().attr('id')
+      var favId = $(this).parent().parent().attr('id')
       var updatedFavorite = $(this).prev().val()
       var requestSettings = {
         method: 'patch',
-        url: `/#/:id/favorites/${fav_id}`,
+        url: `/users/${currentUserId}/favorites/${favId}`,
         data: JSON.stringify({
           name: updatedFavorite
         }), contentType: 'application/json'
       }
       $.ajax(requestSettings).done(function(d) {
         if (d.success) {
-          $(`#${id} a`).text(d.updatedTask.body)
+          console.log(d.updatedTask);
+          $(`#${favId} a`).text(d.updatedTask)
           editForm.slideUp()
         }
       })
