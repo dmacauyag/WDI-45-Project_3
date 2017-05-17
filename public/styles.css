@@ -61,7 +61,6 @@ footer {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 50px;
-  padding-right: 30px;
 }
 
 .title {
@@ -169,7 +168,9 @@ body > div > div > form > div:nth-child(3) > input {
   opacity: .5
   }
 
-
+.display-3 {
+  margin-bottom: 1px;
+}
 
 .pictag {
   margin-top: 20px;
