@@ -1,4 +1,5 @@
 const
+  dotenv = require('dotenv').load({silent: true}),
   express = require('express'),
   app = express(),
   ejs = require('ejs'),
@@ -28,11 +29,11 @@ const twitterClient = new Twitter({
 // environment port
 const
   port = 3000,
-  mongoConnectionString = 'mongodb://localhost/stalitics'
+  mongoConnectionString = process.env.MONGODB_URL || 'mongodb://localhost/twitlitics'
 
 // mongoose connection
 mongoose.connect(mongoConnectionString, (err) => {
-  console.log(err || "Connected to MongoDB (stalitics)")
+  console.log(err || "Connected to MongoDB (twitlitics)")
 })
 
 // socket io connection
