@@ -39,7 +39,7 @@ userRouter.get('/logout', isLoggedIn, (req, res) => {
   res.redirect('/')
 })
 
-userRouter.route('users/:id/favorites')
+userRouter.route('/users/:id/favorites')
   .get(favoriteController.index)
   .post(favoriteController.create)
 //
