@@ -12,6 +12,8 @@
       <ul>
         <% data.statuses.forEach(function(f) { %>
           <li>
+            <img src="<%= f.user.profile_image_url %>">
+            <span><%= f.user.name %></span><br>
             <span><%= f.text %></span>
           </li>
         <% }) %>
@@ -20,17 +22,28 @@
 
     <div class="col-sm-6 projects">
       <h2>MOST RETWEETED</h2>
-      <ul>
-        <% data.statuses.forEach(function(f) { %>
-          <% if(f.retweet_count > 0) { %>
-          <li>
-            <span><%= f.retweet_count %></span>
-            <span><%= f.text %></span>
-          </li>
-          <% } else { %>
-          <% } %>
-        <% }) %>
+      <ul id="retweet-list">
+
       </ul>
+
+      <script type="text/javascript">
+        var retrievedData = <%- JSON.stringify(data) %>
+        var $retweetList = $('#retweet-list')
+
+        retrievedData.statuses.sort(function(a, b) {
+          return parseFloat(b.retweet_count) - parseFloat(a.retweet_count)
+        })
+
+        retrievedData.statuses.forEach(function(f) {
+          if(f.retweet_count > 0) {
+            var $theLi = $('<li>')
+            $theLi.append(`<span>${f.retweet_count}</span><br>`)
+            $theLi.append(`<span>${f.text}</span>`)
+            $retweetList.append($theLi)
+          }
+        })
+      </script>
+
     </div>
   </div>
 </div>
