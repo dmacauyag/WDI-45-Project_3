@@ -4,11 +4,13 @@ body {
   font-family: 'Raleway', sans-serif;
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+
 }
 
 html {
   position: relative;
   min-height: 100%;
+  max-width: 100%;
 }
 
 h2 {
@@ -59,6 +61,7 @@ footer {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 50px;
+  padding-right: 30px;
 }
 
 .title {
@@ -78,7 +81,7 @@ footer {
  margin-top: 55px;
  margin-right: auto;
  margin-left: auto;
-
+ max-width: 100%;
 }
 
 #copy {
@@ -127,6 +130,7 @@ footer {
 .col-sm-3 {
   height: 400px;
   text-align: center;
+  margin-top: 60px;
 }
 
 .container {
@@ -138,6 +142,7 @@ footer {
 
 a {
   color: black;
+  display: inline-block;
 }
 
 body > div > div.jumbotron.jumbotron-fluid {
@@ -151,4 +156,22 @@ a:hover {
 
 body > div > div > form > div:nth-child(3) > input {
   background-color: white;
+}
+
+.featured {
+  list-style: none;
+  font-size: 18px;
+  padding-right: 30px;
+}
+
+.pic {
+  background: none;
+  opacity: .5
+  }
+
+
+
+.pictag {
+  margin-top: 20px;
+  font-size: 20px;
 }
