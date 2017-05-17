@@ -9,6 +9,13 @@
   <h2>TOP HASHTAGS</h2>
   <p>Actual content goes here. It will span the full width.</p>
 
+  <p><% data[0].trends.forEach(function(t){ %>
+      <li>
+        <span><a href="<%= t.url %>"><%= t.name %></a></span>
+      </li>
+    <% }) %>
+  </p>
+
   <div class="row">
     <!-- multiple columns -->
   </div><!-- closing .row -->

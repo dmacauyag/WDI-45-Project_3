@@ -15,7 +15,8 @@ const
   passportConfig = require('./config/passport.js'),
   userRoutes = require('./routes/users.js'),
   server = require('http').Server(app),
-  io = require('socket.io')(server)
+  io = require('socket.io')(server),
+  twitterClient = require('./config/twit.js')
 
 // environment port
 const

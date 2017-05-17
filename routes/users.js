@@ -3,7 +3,8 @@ const
   passport = require('passport'),
   userRouter = express.Router(),
   User = require('../models/User.js'),
-  favoriteController = require('../controllers/favorites.js')
+  favoriteController = require('../controllers/favorites.js'),
+  twitterClient = require('../config/twit.js')
 
 userRouter.route('/login')
   .get((req, res) => {
@@ -53,11 +54,14 @@ userRouter.get('/featured', (req, res) => {
 })
 
 userRouter.get('/tweets', (req, res) => {
-  res.render('pages/tweets')
+    res.render('pages/tweets')
 })
 
 userRouter.get('/hashtags', (req, res) => {
-  res.render('pages/hashtags')
+  twitterClient.get('trends/place', {id: 2442047}, (err, data, response) => {
+    if(err) {console.log(err)}
+    res.render('pages/hashtags', {data: data})
+  })
 })
 
 function isLoggedIn(req, res, next) {
