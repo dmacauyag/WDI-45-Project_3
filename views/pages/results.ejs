@@ -22,13 +22,13 @@
       <h2>MOST RETWEETED</h2>
       <ul>
         <% data.statuses.forEach(function(f) { %>
+          <% if(f.retweet_count > 0) { %>
           <li>
-            <% if(f.retweet_count > 0) { %>
-              <span><%= f.retweet_count %></span>
-              <span><%= f.text %></span>
-            <% } else { %>
-            <% } %>
+            <span><%= f.retweet_count %></span>
+            <span><%= f.text %></span>
           </li>
+          <% } else { %>
+          <% } %>
         <% }) %>
       </ul>
     </div>
