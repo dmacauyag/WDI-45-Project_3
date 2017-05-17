@@ -22,6 +22,7 @@
     var $favoritesList = $('#favorites-list')
     var $favoritesInput = $('#favorite-input')
     var $addFavorite = $('#add-favorite')
+    var currentUserId = <%- JSON.stringify(currentUser.id) %>
 
     // event delegation for the delete favorites button
     $favoritesList.on('click', 'li button.delete', function() {
@@ -44,9 +45,10 @@
 
     // event listener to add a favorites
     $addFavorite.on('click', function() {
+      console.log(currentUserId);
       var requestSettings = {
         method: 'post',
-        url: '/favorites',
+        url: `/users/${currentUserId}/favorites`,
         data: JSON.stringify({
           name: $favoritesInput.val()
         }), contentType: 'application/json'
