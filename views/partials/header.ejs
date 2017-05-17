@@ -40,7 +40,9 @@
         <% } else { %>
           <li><a href="/login">Login</a></li>
         <% } %>
+        <% if(!isLoggedIn){ %>
         <li><a href="/signup">Sign Up</a></li>
+        <% } %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -83,7 +85,12 @@
 
     <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-3">Username</h1>
+    <% if(isLoggedIn) {%>
+    <h1 class="display-3"><%= currentUser.local.user_name %></h1>
     <p class="lead">I'm a badass</p>
+    <% } else { %>
+      <h1 class="display-3">Something</h1>
+      <p class="lead">Something here</p>
+    <% } %>
   </div>
 </div>
