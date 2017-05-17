@@ -1,5 +1,6 @@
 const
-  User = require('../models/User.js')
+  User = require('../models/User.js'),
+  twitterClient = require('../config/twit.js')
 
 module.exports = {
   index: (req, res) => {
