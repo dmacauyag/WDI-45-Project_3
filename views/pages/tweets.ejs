@@ -5,13 +5,39 @@
   <div class="row">
     <!-- multiple columns -->
   </div><!-- closing .row -->
+  <input type="text" id="user-input">
+  <button type="button" id="search-user">Search For User</button>
 
   <h2>TOP TWEETS</h2>
   <p>Actual content goes here. It will span the full width.</p>
+
+  <ul style="list-style: none;" id="users-top-tweets">
+
+  </ul>
 
   <div class="row">
     <!-- multiple columns -->
   </div><!-- closing .row -->
 </div><!-- closing .container -->
+
+<script type="text/javascript">
+  var retrievedData = <%- JSON.stringify(data) %>
+  var $userTweets = $('#users-top-tweets')
+  var $userInput = $('#user-input')
+  var $searchUser = $('#search-user')
+
+  retrievedData.sort(function(a, b) {
+    return parseFloat(b.retweet_count) - parseFloat(a.retweet_count)
+  })
+
+  retrievedData.forEach(function(f) {
+    if(f.retweet_count != null) {
+      var $theLi = $('<li><br>')
+      $theLi.append(`<span>${f.text} </span>`)
+      $theLi.append(`<span>${f.retweet_count}</span>`)
+      $userTweets.append($theLi)
+    }
+  })
+</script>
 
 <% include ../partials/footer %>
