@@ -36,6 +36,9 @@ userRouter.route('/users/:id')
   .patch(userController.update)
   .delete(userController.destroy)
 
+userRouter.route('/users/:id/edit')
+  .get(userController.edit)
+
 userRouter.get('/logout', isLoggedIn, (req, res) => {
   req.logout()
   res.redirect('/')

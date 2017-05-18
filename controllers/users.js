@@ -7,19 +7,26 @@ module.exports = {
     })
   },
 
+  edit: (req, res) => {
+    User.findById(req.params.id, (err, user) => {
+      if(err){console.log(err)}
+      res.render('pages/edit', {user: user})
+    })
+  },
+
   update: (req, res) => {
-    User.findByIdAndUpade(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+    User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
       if(err) {
         res.json({message: "Try again", success: false})
       }
-      res.json({message: "Bye 😢", success: true})
+      res.redirect('/users/' + updatedUser.id)
     })
   },
 
   destroy: (req, res) => {
     User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
       if(err) {res.json({message: "Try again", success: false})}
-      res.json({message: "User was deleted", success: true})
+      res.json({message: "Bye 😢", success: true})
     })
   }
 }

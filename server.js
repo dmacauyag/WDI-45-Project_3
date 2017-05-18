@@ -10,6 +10,7 @@ const
   MongoDBStore = require('connect-mongodb-session')(session),
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
+  methodOverride = require('method-override'),
   flash = require('connect-flash'),
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
@@ -47,6 +48,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(flash())
+app.use(methodOverride('_method'))
 
 // ejs configuration
 app.set('view engine', 'ejs')
