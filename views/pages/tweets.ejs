@@ -1,29 +1,20 @@
 <% include ../partials/header %>
 
+<div class="container box">
+  <div class="row-centered">
 
-<div class="container">
-  <div class="row">
-    <!-- multiple columns -->
-  </div><!-- closing .row -->
-
+    <h2>TOP TWEETS</h2>
+        <h4>Top 5 Recent Tweets</h4>
+        <br>
   <form id="user-bar" method="get" action="/users/">
     <div class="form-group">
-      <input type="text" id="search-user" placeholder="Search" required="true">
+      <input type="text" id="search-user" placeholder="Search Username" required="true">
       <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-right"></button>
+
     </div>
   </form>
 
-  <h2>TOP TWEETS</h2>
-
   <ul style="list-style: none;" id="users-top-tweets">
-
-  </ul>
-
-  <div class="row">
-    <!-- multiple columns -->
-  </div><!-- closing .row -->
-</div><!-- closing .container -->
-
 <script type="text/javascript">
   var retrievedData = <%- JSON.stringify(data) %>
   var $userTweets = $('#users-top-tweets')
@@ -44,12 +35,19 @@
   for(let i = 0; i < retrievedData.length; i += 1) {
     if(i < 5) {
       var retData = retrievedData[i]
-      var $theLi = $('<li><br>')
-      $theLi.append(`<span>${retData.retweet_count} </span><br>`)
-      $theLi.append(`<span>${retData.text} </span>`)
+      var $theLi = $('<li><br><br><hr>')
+      $theLi.append(`<br><h4>RETWEETS</h4><span>${retData.retweet_count} </span><br><br>`)
+      $theLi.append(`<span>${retData.text} </span><br>`)
+      var date = retData.user.created_at.split(' ')
+      $theLi.append(`<span>Tweeted on ${date[1] + " " + date[2] + " " + date[5]}</span>`)
       $userTweets.append($theLi)
     }
   }
 </script>
+<hr>
+<br>
+</ul>
+  </div><!-- closing .row -->
+</div><!-- closing .container -->
 
 <% include ../partials/footer %>

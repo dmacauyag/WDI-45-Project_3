@@ -51,7 +51,51 @@ userRouter.route('/users/:id/favorites/:favId')
   .delete(favoriteController.destroy)
 
 userRouter.get('/featured', (req, res) => {
-  res.render('pages/featured')
+  var featuredUsers = ['realDonaldTrump', 'katyperry', 'BarackObama', 'jtimberlake', 'rihanna', 'ladygaga', 'britneyspears', 'KimKardashian', 'taylorswift13', 'ArianaGrande']
+  var userData = []
+
+  twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[0], count: 1}, (err, data, response) => {
+    var trumpData = data[0].user
+    userData.push(trumpData)
+    twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[1], count: 1}, (err, data, response) => {
+      var perryData = data[0].user
+      userData.push(perryData)
+      twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[2], count: 1}, (err, data, response) => {
+        var obamaData = data[0].user
+        userData.push(obamaData)
+        twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[3], count: 1}, (err, data, response) => {
+          var timberlakeData = data[0].user
+          userData.push(timberlakeData)
+          twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[4], count: 1}, (err, data, response) => {
+            var rihannaData = data[0].user
+            userData.push(rihannaData)
+            twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[5], count: 1}, (err, data, response) => {
+              var gagaData = data[0].user
+              userData.push(gagaData)
+              twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[6], count: 1}, (err, data, response) => {
+                var spearsData = data[0].user
+                userData.push(spearsData)
+                twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[7], count: 1}, (err, data, response) => {
+                  var kardashianData = data[0].user
+                  userData.push(kardashianData)
+                  twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[8], count: 1}, (err, data, response) => {
+                    var swiftData = data[0].user
+                    userData.push(swiftData)
+                    twitterClient.get('statuses/user_timeline', {screen_name: featuredUsers[9], count: 1}, (err, data, response) => {
+                      var grandeData = data[0].user
+                      userData.push(grandeData)
+                      console.log(userData)
+                      res.render('pages/featured', {userData: userData})
+                    })
+                  })
+                })
+              })
+            })
+          })
+        })
+      })
+    })
+  })
 })
 
 userRouter.get('/tweets/:name', (req, res) => {

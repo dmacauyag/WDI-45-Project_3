@@ -13,9 +13,7 @@
 
   <ul id='favorites-list'>
     <% user.local.favorite.forEach(function(f) { %>
-      <br>
-      <br>
-      <li id="<%= f._id %>">
+      <li id="<%= f._id %>" class="favorite">
         <a href="/users/<%= currentUser.id %>/favorites/<%= f._id %>"><h3><%= f.name %></h3></a>
         <br>
         <button class="edit">Edit</button>
@@ -71,8 +69,8 @@
     function appendFavorite(favorite) {
       $favoritesList.html('')
       favorite.forEach(function(f) {
-        var theLi = $('<li>').attr('id', f._id)
-        theLi.html(`<a href="/users/${currentUserId}/favorites/${f._id}">${f.name}</a>`)
+        var theLi = $('<li>').attr('id', f._id).addClass('favorite')
+        theLi.html(`<a href="/users/${currentUserId}/favorites/${f._id}"><h3> ${f.name} </h3></a>`)
 
         var editButton = $('<button>').addClass('edit')
         editButton.text('Edit')
