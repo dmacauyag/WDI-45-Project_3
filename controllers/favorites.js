@@ -1,6 +1,7 @@
 const
   User = require('../models/User.js'),
-  twitterClient = require('../config/twit.js')
+  twitterClient = require('../config/twit.js'),
+  _ = require('underscore')
 
 module.exports = {
   index: (req, res) => {
@@ -33,7 +34,8 @@ module.exports = {
       }
 
       twitterClient.get('search/tweets', { q: selectedFavorite.name, count: 100 }, (err, data, response) => {
-        res.render('pages/results', {data: data, favorite: selectedFavorite})
+        var uniqueData = _.uniq(data.statuses, function(d){ return d.text })
+        res.render('pages/results', {data: data, uniqueData: uniqueData, favorite: selectedFavorite})
       })
     })
   },
@@ -51,7 +53,7 @@ module.exports = {
       }
       user.save((err) => {
         if(err) return console.log(err)
-        res.json({success: true, updatedTask: updatedFavorite.name})
+        res.json({success: true, updatedFavorite: updatedFavorite.name})
       })
     })
   },
