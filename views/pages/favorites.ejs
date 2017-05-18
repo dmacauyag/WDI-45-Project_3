@@ -9,15 +9,15 @@
   <br>
   <input type="text" id="favorite-input">
 
-  <button type="button" class="button" id="add-favorite">Add Favorite</button>
+  <button type="button" class="button btn-primary" id="add-favorite">Add Favorite</button>
 
   <ul id='favorites-list'>
     <% user.local.favorite.forEach(function(f) { %>
       <li id="<%= f._id %>" class="favorite">
         <a href="/users/<%= currentUser.id %>/favorites/<%= f._id %>"><h3><%= f.name %></h3></a>
         <br>
-        <button class="edit">Edit</button>
-        <button class="delete">X</button>
+        <button class="edit btn-success">Edit</button>
+        <button class="delete btn-danger">X</button>
       </li>
       <hr>
     <% }) %>
@@ -72,11 +72,11 @@
         var theLi = $('<li>').attr('id', f._id).addClass('favorite')
         theLi.html(`<a href="/users/${currentUserId}/favorites/${f._id}"><h3> ${f.name} </h3></a><br>`)
 
-        var editButton = $('<button>').addClass('edit')
+        var editButton = $('<button>').addClass('edit btn-success')
         editButton.text('Edit')
         theLi.append(editButton)
 
-        var deleteButton = $('<button>').addClass('delete')
+        var deleteButton = $('<button>').addClass('delete btn-danger')
         deleteButton.text('X')
         theLi.append(deleteButton)
 
