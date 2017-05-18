@@ -2,7 +2,7 @@ const
   mongoose = require('mongoose'),
   bcrypt = require('bcrypt-nodejs'),
   favoriteSchema = mongoose.Schema({
-    name: String
+    name: {type: String, required: true}
   }),
   userSchema = new mongoose.Schema({
     local: {
