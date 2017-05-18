@@ -215,3 +215,16 @@ body > div.container > div > div.col-sm-6.projects {
   margin-left: -15px;
   margin-top: 5px;
 }
+
+.hashtags-list {
+  list-style: none;
+}
+
+#tweet-volume-list {
+  margin-left: -30px;
+}
+
+#favorites-list {
+  list-style: none;
+  margin-right: 30px;
+}

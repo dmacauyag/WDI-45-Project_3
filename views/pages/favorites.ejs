@@ -5,16 +5,23 @@
     <!-- multiple columns -->
   </div><!-- closing .row -->
   <h2>FAVORITES</h2>
+  <br>
+  <br>
   <input type="text" id="favorite-input">
+
   <button type="button" class="button" id="add-favorite">Add Favorite</button>
 
   <ul id='favorites-list'>
     <% user.local.favorite.forEach(function(f) { %>
+      <br>
+      <br>
       <li id="<%= f._id %>">
-        <a href="/users/<%= currentUser.id %>/favorites/<%= f._id %>" ><%= f.name %></a>
+        <a href="/users/<%= currentUser.id %>/favorites/<%= f._id %>"><h3><%= f.name %></h3></a>
+        <br>
         <button class="edit">Edit</button>
         <button class="delete">X</button>
       </li>
+      <hr>
     <% }) %>
   </ul>
 

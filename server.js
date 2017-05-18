@@ -14,6 +14,7 @@ const
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
   userRoutes = require('./routes/users.js'),
+  apiRoutes = require('./routes/api.js'),
   server = require('http').Server(app),
   io = require('socket.io')(server),
   twitterClient = require('./config/twit.js')
@@ -75,6 +76,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/', userRoutes)
+app.use('/api', apiRoutes)
 
 app.listen(PORT, (err) => {
   console.log(err || "Server listening on port:", PORT)

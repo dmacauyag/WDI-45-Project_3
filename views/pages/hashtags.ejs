@@ -2,19 +2,10 @@
 
 
 <div class="container">
-  <div class="row">
-    <!-- multiple columns -->
-  </div><!-- closing .row -->
+  <div class="row-centered">
 
   <h2>TOP HASHTAGS</h2>
     <ul style="list-style: none;" id="tweet-volume-list">
-
-    </ul>
-
-  <div class="row">
-    <!-- multiple columns -->
-  </div><!-- closing .row -->
-</div><!-- closing .container -->
 
 <script type="text/javascript">
   var retrievedData = <%- JSON.stringify(data[0]) %>
@@ -27,11 +18,16 @@
   retrievedData.trends.forEach(function(f) {
     if(f.tweet_volume != null) {
       var $theLi = $('<li><br>')
-      $theLi.append(`<span>${f.tweet_volume} </span>`)
-      $theLi.append(`<span><a href="/search/${f.name}">${f.name}</a></span>`)
+      $theLi.append(`<h1><span>${f.tweet_volume} </span></h1>`)
+      $theLi.append(`<span><b><a href="/search/${f.name}">${f.name}</a></b></span><hr>`)
       $searchList.append($theLi)
     }
   })
 </script>
+
+    </ul>
+  </div>
+</div>
+
 
 <% include ../partials/footer %>
