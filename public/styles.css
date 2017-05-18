@@ -237,3 +237,12 @@ body > div.container.box {
 #users-top-tweets {
   margin-right: 50px;
 }
+
+li.favorite {
+  padding-top: 2em;
+}
+
+#favorites-list li:after{
+  content: "tim";
+  display: block;
+}
