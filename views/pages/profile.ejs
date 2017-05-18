@@ -11,8 +11,8 @@
                 <strong>email</strong>: <%= user.local.email %><br>
             </p>
 
-              <button id="user-edit" type="button" name="button">Edit Information</button>
-              <button id="user-delete" type="button" name="button">Delete Profile</button>
+              <button id="user-edit" type="button" name="button"><a href="/users/<%= currentUser.id %>/edit" style="color:black;">Edit Information</a></button>
+              <button id="user-delete" type="button" name="button" style="color:black;">Delete Profile</button>
 
         </div>
     </div>
