@@ -3,19 +3,59 @@
   <h2>FEATURED USERS</h2>
 
 <div class="row">
-    <div class="col-md-2 col-md-offset-1"><a href="/search/Donald Trump">Donald Trump</a></div>
-    <div class="col-md-2"><a href="/search/Katy Perry">Katy Perry</a></div>
-    <div class="col-md-2"><a href="/search/Barack Obama">Barack Obama</a></div>
-    <div class="col-md-2"><a href="/search/Justin Timberlake">Justin Timberlake</a></div>
-    <div class="col-md-2"><a href="/search/Rihanna">Rihanna</a></div>
+    <div class="col-md-2 col-md-offset-1">
+      <a href="/search/Donald Trump">Donald Trump</a>
+      <img src="<%= userData[0].profile_image_url %>">
+      <%= userData[0].screen_name %>, followers = <%= userData[0].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Katy Perry">Katy Perry</a>
+      <img src="<%= userData[1].profile_image_url %>">
+      <%= userData[1].screen_name %>, followers = <%= userData[1].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Barack Obama">Barack Obama</a>
+      <img src="<%= userData[2].profile_image_url %>">
+      <%= userData[2].screen_name %>, followers = <%= userData[2].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Justin Timberlake">Justin Timberlake</a>
+      <img src="<%= userData[3].profile_image_url %>">
+      <%= userData[3].screen_name %>, followers = <%= userData[3].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Rihanna">Rihanna</a>
+      <img src="<%= userData[4].profile_image_url %>">
+      <%= userData[4].screen_name %>, followers = <%= userData[4].followers_count %>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-2 col-md-offset-1"><a href="/tweets">Lady Gaga</a></div>
-    <div class="col-md-2"><a href="/search/Britney Spears">Britney Spears</a></div>
-    <div class="col-md-2"><a href="/search/Kim Kardashian">Kim Kardashian</a></div>
-    <div class="col-md-2"><a href="/search/Taylor Swift">Taylor Swift</a></div>
-    <div class="col-md-2"><a href="/search/Ariana Grande">Ariana Grande</a></div>
+    <div class="col-md-2 col-md-offset-1">
+      <a href="/tweets">Lady Gaga</a>
+      <img src="<%= userData[5].profile_image_url %>">
+      <%= userData[5].screen_name %>, followers = <%= userData[5].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Britney Spears">Britney Spears</a>
+      <img src="<%= userData[6].profile_image_url %>">
+      <%= userData[6].screen_name %>, followers = <%= userData[6].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Kim Kardashian">Kim Kardashian</a>
+      <img src="<%= userData[7].profile_image_url %>">
+      <%= userData[7].screen_name %>, followers = <%= userData[7].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Taylor Swift">Taylor Swift</a>
+      <img src="<%= userData[8].profile_image_url %>">
+      <%= userData[8].screen_name %>, followers = <%= userData[8].followers_count %>
+    </div>
+    <div class="col-md-2">
+      <a href="/search/Ariana Grande">Ariana Grande</a>
+      <img src="<%= userData[9].profile_image_url %>">
+      <%= userData[9].screen_name %>, followers = <%= userData[9].followers_count %>
+    </div>
 </div>
 
 <% include ../partials/footer %>
