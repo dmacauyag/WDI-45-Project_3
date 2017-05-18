@@ -9,19 +9,24 @@
 
 <script type="text/javascript">
   var retrievedData = <%- JSON.stringify(data[0]) %>
+  console.log(retrievedData)
   var $searchList = $('#tweet-volume-list')
 
-  retrievedData.trends.sort(function(a, b) {
+  var trendsWithVolume = retrievedData.trends.filter(function(trend) {
+    return trend.tweet_volume
+  })
+
+  trendsWithVolume.sort(function(a, b) {
     return parseFloat(b.tweet_volume) - parseFloat(a.tweet_volume)
   })
 
-  retrievedData.trends.forEach(function(f) {
-    if(f.tweet_volume != null) {
+  trendsWithVolume.forEach(function(f) {
+    // if(f.tweet_volume != null) {
       var $theLi = $('<li><br>')
       $theLi.append(`<h1><span>${f.tweet_volume} </span></h1>`)
       $theLi.append(`<span><b><a href="/search/${f.name}">${f.name}</a></b></span><hr>`)
       $searchList.append($theLi)
-    }
+    // }
   })
 </script>
 
