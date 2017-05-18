@@ -30,6 +30,12 @@ h2 {
   border-color: lightgrey;
 }
 
+h4 {
+  color: grey;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .btn .btn-primary .btn-lg {
   border-radius: 0;
   background-color: lightgrey;
@@ -243,5 +249,78 @@ li.favorite {
 }
 
 #favorites-list li:after{
+  padding-top: 20px;
   display: block;
+}
+
+
+body > div.container > div.row-centered > div.col-md-2.col-md-offset-1 > a {
+  color: grey;
+  font-weight: bold;
+}
+
+body > div.container > div.row-centered > div:nth-child(2) > a {
+  display: block;
+  color: grey;
+  font-weight: bold;
+}
+
+body > div.container > div.row-centered > div:nth-child(3) > a {
+  display: block;
+  color: grey;
+  font-weight: bold;
+}
+
+body > div.container > div.row-centered > div:nth-child(4) > a {
+  display: block;
+  color: grey;
+  font-weight: bold;
+}
+
+body > div.container > div.row-centered > div:nth-child(5) > a {
+  display: block;
+  color: grey;
+  font-weight: bold;
+}
+
+body > div.container > div.row.featured-chart > div.col-md-2.col-md-offset-1 {
+  padding: 30px;
+  font-weight: bold;
+}
+
+body > div.container > div.row.featured-chart > div:nth-child(2) {
+  padding: 30px;
+}
+
+body > div.container > div.row.featured-chart > div:nth-child(4) {
+  padding: 30px;
+}
+
+body > div.container > div.row.featured-chart > div:nth-child(5) {
+  padding: 30px;
+}
+
+body > div.container > div.row.featured-chart > div:nth-child(6) {
+  padding: 30px;
+}
+
+body > div.container > div.row.featured-chart > div:nth-child(7) {
+  padding: 30px;
+}
+
+body > div.container > div.row.featured-chart > div:nth-child(3) {
+  padding: 30px;
+}
+
+body > div.container > div.row.featured-chart > div.col-md-2.col-md-offset-1 > a {
+  display: inherit;
+}
+
+.followers {
+  margin: auto;
+}
+
+.featured-second {
+  color: grey;
+  font-weight: bold;
 }
