@@ -102,8 +102,8 @@
       }
       $.ajax(requestSettings).done(function(d) {
         if (d.success) {
-          console.log(d.updatedTask);
-          $(`#${favId} a`).text(d.updatedTask)
+          console.log(d.updatedFavorite);
+          $(`#${favId} a`).html(`<h3>${d.updatedFavorite}</h3>`)
           editForm.slideUp()
         }
       })
