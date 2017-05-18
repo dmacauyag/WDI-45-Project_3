@@ -69,7 +69,7 @@
       searchForm.addEventListener('submit', function(evt) {
         evt.preventDefault()
         var query = document.getElementById('search-input').value
-        window.location.href = '/users/' + query
+        window.location.href = '/search/' + query
       })
     </script>
 
@@ -84,7 +84,7 @@
   <div class="container">
     <% if(isLoggedIn) {%>
     <h1 class="display-3"><%= currentUser.local.user_name %></h1>
-    <p class="lead">I'm a Twitlics badass</p>
+    <p class="lead">I'm a Twitlitics badass</p>
     <% } else { %>
       <h1 class="display-3">Welcome</h1>
       <p class="lead"><i class="fa fa-smile-o"></i></p>

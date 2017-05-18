@@ -4,7 +4,6 @@ body {
   font-family: 'Raleway', sans-serif;
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-
 }
 
 html {
@@ -13,8 +12,15 @@ html {
   max-width: 100%;
 }
 
+h1 {
+  text-transform: uppercase;
+  color: #05A8F5;
+  color: grey;
+  text-align: center;
+}
+
 h2 {
-  color: #A7F3FF;
+  color: #05A8F5;
   text-align: center;
 }
 
@@ -50,7 +56,7 @@ body > div > div > form > button {
 
 .navbar .nav > li > a:hover {
   text-decoration: none;
-  color: #A7F3FF;
+  color: #05A8F5;
 }
 
 /* FOOTER */
@@ -76,11 +82,11 @@ footer {
 }
 
 .col-sm-12 {
- bottom: 0px;
- margin-top: 55px;
- margin-right: auto;
- margin-left: auto;
- max-width: 100%;
+  bottom: 0px;
+  margin-top: 55px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
 }
 
 #copy {
@@ -94,13 +100,12 @@ footer {
 /* BLOG COLUMNS */
 
 .row-centered {
-    text-align: center;
+  text-align: center;
 }
 
 .col-centered {
   display: inline-block;
   float: none;
-  background: aquamarine;
   opacity: .7;
   width: 300px;
   height: 200px;
@@ -125,7 +130,6 @@ footer {
   border-radius: 0px;
 }
 
-
 .col-sm-3 {
   height: 400px;
   text-align: center;
@@ -135,6 +139,11 @@ footer {
 .container {
   text-align: center;
   width: 100%;
+}
+
+col-sm-6 {
+  margin-bottom: 20px;
+  padding-bottom: 100px;
 }
 
 /* LINKS */
@@ -150,7 +159,7 @@ body > div > div.jumbotron.jumbotron-fluid {
 
 a:hover {
   text-decoration: none;
-  color: #A7F3FF;
+  color: #05A8F5;
 }
 
 body > div > div > form > div:nth-child(3) > input {
@@ -175,4 +184,34 @@ body > div > div > form > div:nth-child(3) > input {
 .pictag {
   margin-top: 20px;
   font-size: 20px;
+}
+
+.retweet {
+  list-style: none;
+  margin: auto;
+}
+
+.related {
+  list-style: none;
+  margin: auto;
+}
+
+body > div.container > div > div.col-sm-6.blog {
+  padding-right: 65px;
+  padding-left: 65px;
+
+}
+
+body > div.container > div > div.col-sm-6.projects {
+  padding-right: 65px;
+  padding-left: 65px;
+}
+
+#retweet-list {
+  margin-left: -25px;
+}
+
+.related {
+  margin-left: -15px;
+  margin-top: 5px;
 }
