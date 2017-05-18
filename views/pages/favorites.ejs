@@ -19,7 +19,6 @@
         <button class="edit">Edit</button>
         <button class="delete">X</button>
       </li>
-      <hr>
     <% }) %>
   </ul>
 
@@ -70,7 +69,7 @@
       $favoritesList.html('')
       favorite.forEach(function(f) {
         var theLi = $('<li>').attr('id', f._id).addClass('favorite')
-        theLi.html(`<a href="/users/${currentUserId}/favorites/${f._id}"><h3> ${f.name} </h3></a>`)
+        theLi.html(`<a href="/users/${currentUserId}/favorites/${f._id}"><h3> ${f.name} </h3></a><br>`)
 
         var editButton = $('<button>').addClass('edit')
         editButton.text('Edit')
@@ -80,6 +79,7 @@
         deleteButton.text('X')
         theLi.append(deleteButton)
         $favoritesList.append(theLi)
+
       })
     }
 
