@@ -53,7 +53,7 @@ module.exports = {
       }
       user.save((err) => {
         if(err) return console.log(err)
-        res.json({success: true, updatedTask: updatedFavorite.name})
+        res.json({success: true, updatedFavorite: updatedFavorite.name})
       })
     })
   },
