@@ -4,7 +4,8 @@ const
   userRouter = express.Router(),
   User = require('../models/User.js'),
   favoriteController = require('../controllers/favorites.js'),
-  twitterClient = require('../config/twit.js')
+  twitterClient = require('../config/twit.js'),
+  _ = require('underscore')
 
 userRouter.route('/login')
   .get((req, res) => {
@@ -31,7 +32,8 @@ userRouter.get('/profile', isLoggedIn, (req, res) => {
 
 userRouter.get('/search/:query', (req, res) => {
   twitterClient.get('search/tweets', { q: req.params.query, count: 100 }, (err, data, response) => {
-    res.render('pages/results', {data: data, favorite: req.params.query})
+    var uniqueData = _.uniq(data.statuses, function(d){ return d.text })
+    res.render('pages/results', {data: data, uniqueData: uniqueData, favorite: req.params.query})
   })
 })
 
