@@ -4,15 +4,15 @@
     <div class="col-sm-6 col-sm-offset-3">
         <div class="well">
 
-            <h3>Locally Stored User</h3>
+            <h3>My Profile</h3>
 
             <p>
                 <strong>Name</strong>: <%= user.local.name %><br>
-                <strong>email</strong>: <%= user.local.email %><br>
+                <strong>Email</strong>: <%= user.local.email %><br>
             </p>
 
-              <button id="user-edit" type="button" name="button"><a href="/users/<%= currentUser.id %>/edit" style="color:black;">Edit Information</a></button>
-              <button id="user-delete" type="button" name="button" style="color:black;">Delete Profile</button>
+              <button id="user-edit" type="button" name="button" class="btn-success"><a href="/users/<%= currentUser.id %>/edit" style="color:white;">Edit Information</a></button>
+              <button id="user-delete" type="button" name="button" class="btn-danger" style="color:white;">Delete Profile</button>
 
         </div>
     </div>
@@ -25,14 +25,18 @@
   var currentUser = <%- JSON.stringify(currentUser) %>
 
   $userDelete.on('click', function() {
-    var requestSettings = {
-      method: 'delete',
-      url: `/users/${currentUser._id}`
+    var confirmation = confirm("Are you sure you want to delete your account?")
+
+    if(confirmation) {
+      var requestSettings = {
+        method: 'delete',
+        url: `/users/${currentUser._id}`
+      }
+      $.ajax(requestSettings).done(function(data) {
+        console.log(data)
+        window.location.href = '/'
+      })
     }
-    $.ajax(requestSettings).done(function(data) {
-      console.log(data)
-      window.location.href = '/'
-    })
   })
 
 </script>
