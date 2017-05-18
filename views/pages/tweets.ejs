@@ -6,12 +6,51 @@
     <!-- multiple columns -->
   </div><!-- closing .row -->
 
+  <form id="user-bar" method="get" action="/users/">
+    <div class="form-group">
+      <input type="text" id="search-user" placeholder="Search" required="true">
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-right"></button>
+    </div>
+  </form>
+
   <h2>TOP TWEETS</h2>
   <p>Actual content goes here. It will span the full width.</p>
+
+  <ul style="list-style: none;" id="users-top-tweets">
+
+  </ul>
 
   <div class="row">
     <!-- multiple columns -->
   </div><!-- closing .row -->
 </div><!-- closing .container -->
+
+<script type="text/javascript">
+  var retrievedData = <%- JSON.stringify(data) %>
+  var $userTweets = $('#users-top-tweets')
+
+
+  var searchForm = document.getElementById('user-bar')
+
+  searchForm.addEventListener('submit', function(evt) {
+    evt.preventDefault()
+    var name = document.getElementById('search-user').value
+    window.location.href = '/tweets/' + name
+  })
+
+  retrievedData.sort(function(a, b) {
+    return parseFloat(b.retweet_count) - parseFloat(a.retweet_count)
+  })
+
+  for(let i = 0; i < retrievedData.length; i += 1) {
+    if(i < 5) {
+      var retData = retrievedData[i]
+      var $theLi = $('<li><br>')
+      $theLi.append(`<span>${retData.retweet_count} </span><br>`)
+      $theLi.append(`<span>${retData.text} </span>`)
+      $userTweets.append($theLi)
+    }
+  }
+</script>
 
 <% include ../partials/footer %>

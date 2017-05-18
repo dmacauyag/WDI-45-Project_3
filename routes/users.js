@@ -59,8 +59,10 @@ userRouter.get('/featured', (req, res) => {
   res.render('pages/featured')
 })
 
-userRouter.get('/tweets', (req, res) => {
-  res.render('pages/tweets')
+userRouter.get('/tweets/:name', (req, res) => {
+  twitterClient.get('statuses/user_timeline', {screen_name:   req.params.name, count: 200}, (err, data, response) => {
+    res.render('pages/tweets', {data: data, name: req.params.name})
+  })
 })
 
 userRouter.get('/hashtags', (req, res) => {
