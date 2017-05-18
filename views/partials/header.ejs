@@ -16,8 +16,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/profile">My Profile</a></li>
         <% if(isLoggedIn) { %>
+        <li><a href="/users/<%= currentUser.id %>">My Profile</a></li>
           <li><a href="/users/<%= currentUser.id %>/favorites">Favorites</a></li>
         <% } %>
       </ul>
@@ -84,7 +84,7 @@
   <div class="container">
     <% if(isLoggedIn) {%>
     <h1 class="display-3"><%= currentUser.local.user_name %></h1>
-    <p class="lead">I'm a Twitlitics badass</p>
+    <p class="lead"><%= currentUser.local.head_line %></p>
     <% } else { %>
       <h1 class="display-3">Welcome</h1>
       <p class="lead"><i class="fa fa-smile-o"></i></p>

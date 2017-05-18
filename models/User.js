@@ -7,6 +7,7 @@ const
   userSchema = new mongoose.Schema({
     local: {
       name: {type: String, required: true},
+      head_line: {type: String, default: "I'm a Twitlitics badass"},
       user_name: {type: String, unique: true, required: true},
       email: {type: String, lowercase: true, unique: true, required: true},
       password: String,
