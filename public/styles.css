@@ -243,6 +243,5 @@ li.favorite {
 }
 
 #favorites-list li:after{
-  content: "tim";
   display: block;
 }
