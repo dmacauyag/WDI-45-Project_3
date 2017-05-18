@@ -46,7 +46,7 @@
     $favoritesList.on('click', 'li button.edit', function() {
       $(this).parent().append(editForm)
       editForm.slideDown()
-      $('.edit-input').val($(this).prev().text())
+      $('.edit-input').val($(this).prev().prev().text())
     })
 
     // event listener to add a favorites
@@ -89,7 +89,7 @@
     // edit favorites form
     var editForm = $('<div>').attr('id', 'edit-form')
     editForm.append('<input type="text" class="edit-input">')
-    editForm.append('<button class="button">Update</button>')
+    editForm.append('<button class="btn-primary">Update</button>')
     editForm.hide()
 
     // event listener for the update favorites button
