@@ -11,8 +11,37 @@
                 <strong>email</strong>: <%= user.local.email %><br>
             </p>
 
+              <button id="user-edit" type="button" name="button">Edit Information</button>
+              <button id="user-delete" type="button" name="button">Delete Profile</button>
+
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+  var $userEdit = $('#user-edit')
+  var $userDelete = $('#user-delete')
+  var currentUser = <%- JSON.stringify(currentUser) %>
+
+  $userDelete.on('click', function() {
+    var requestSettings = {
+      method: 'delete',
+      url: `/users/${currentUser._id}`,
+      data: {
+        success: true,
+        redirect: true,
+        redirectURL: '/'
+      }
+    }
+    $.ajax(requestSettings).done(function(data) {
+      console.log(data)
+      if(data.success) {
+        window.location = data.redirectURL
+      }
+    })
+  })
+
+</script>
 
 <% include ../partials/footer %>

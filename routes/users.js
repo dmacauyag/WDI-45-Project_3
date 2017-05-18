@@ -4,6 +4,7 @@ const
   userRouter = express.Router(),
   User = require('../models/User.js'),
   favoriteController = require('../controllers/favorites.js'),
+  userController = require('../controllers/users.js'),
   twitterClient = require('../config/twit.js')
 
 userRouter.route('/login')
@@ -24,22 +25,16 @@ userRouter.route('/signup')
     failureRedirect: '/signup'
   }))
 
-
-userRouter.get('/profile', isLoggedIn, (req, res) => {
-  res.render('pages/profile', {user: req.user})
-})
-
 userRouter.get('/search/:query', (req, res) => {
   twitterClient.get('search/tweets', { q: req.params.query, count: 100 }, (err, data, response) => {
     res.render('pages/results', {data: data, favorite: req.params.query})
   })
 })
 
-userRouter.get('/users/:id', (req, res) => {
-  User.findById(req.params.id, (err, user) => {
-    res.render('pages/index', {user: user})
-  })
-})
+userRouter.route('/users/:id')
+  .get(userController.show)
+  .patch(userController.update)
+  .delete(userController.destroy)
 
 userRouter.get('/logout', isLoggedIn, (req, res) => {
   req.logout()
