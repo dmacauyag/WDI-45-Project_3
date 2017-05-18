@@ -14,7 +14,8 @@
         <% data.statuses.forEach(function(f) { %>
           <li class="related">
             <img src="<%= f.user.profile_image_url %>">
-            <span><h4><%= f.user.name %></h4></span><br>
+            <span><h4><%= f.user.name %></h4></span>
+            <span><h5><%= f.user.location %></h5></span><br>
             <span><%= f.text %></span>
           </li>
           <hr>
