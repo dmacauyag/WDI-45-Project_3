@@ -9,8 +9,8 @@
   <form id="user-bar" method="get" action="/users/">
     <div class="form-group">
       <input type="text" id="search-user" placeholder="Search">
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-right"></button>
     </div>
-    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-right"></button>
   </form>
 
   <h2>TOP TWEETS</h2>
@@ -42,14 +42,15 @@
     return parseFloat(b.retweet_count) - parseFloat(a.retweet_count)
   })
 
-  retrievedData.forEach(function(f) {
-    if(f.retweet_count != null) {
+  for(let i = 0; i < retrievedData.length; i += 1) {
+    if(i < 5) {
+      var retData = retrievedData[i]
       var $theLi = $('<li><br>')
-      $theLi.append(`<span>${f.text} </span>`)
-      $theLi.append(`<span>${f.retweet_count}</span>`)
+      $theLi.append(`<span>${retData.retweet_count} </span><br>`)
+      $theLi.append(`<span>${retData.text} </span>`)
       $userTweets.append($theLi)
     }
-  })
+  }
 </script>
 
 <% include ../partials/footer %>

@@ -61,8 +61,7 @@ userRouter.get('/featured', (req, res) => {
 
 
 userRouter.get('/tweets/:name', (req, res) => {
-  twitterClient.get('statuses/user_timeline', {screen_name:   req.params.name, count: 1}, (err, data, response) => {
-    console.log(data)
+  twitterClient.get('statuses/user_timeline', {screen_name:   req.params.name, count: 200}, (err, data, response) => {
     res.render('pages/tweets', {data: data, name: req.params.name})
   })
 })
