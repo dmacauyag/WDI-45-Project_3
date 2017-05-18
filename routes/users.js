@@ -60,7 +60,7 @@ userRouter.get('/featured', (req, res) => {
 })
 
 userRouter.get('/tweets', (req, res) => {
-    res.render('pages/tweets')
+  res.render('pages/tweets')
 })
 
 userRouter.get('/hashtags', (req, res) => {
