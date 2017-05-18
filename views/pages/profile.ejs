@@ -27,18 +27,11 @@
   $userDelete.on('click', function() {
     var requestSettings = {
       method: 'delete',
-      url: `/users/${currentUser._id}`,
-      data: {
-        success: true,
-        redirect: true,
-        redirectURL: '/'
-      }
+      url: `/users/${currentUser._id}`
     }
     $.ajax(requestSettings).done(function(data) {
       console.log(data)
-      if(data.success) {
-        window.location = data.redirectURL
-      }
+      window.location.href = '/'
     })
   })
 
