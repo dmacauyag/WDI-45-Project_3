@@ -5,7 +5,8 @@ const
   User = require('../models/User.js'),
   favoriteController = require('../controllers/favorites.js'),
   userController = require('../controllers/users.js'),
-  twitterClient = require('../config/twit.js')
+  twitterClient = require('../config/twit.js'),
+  _ = require('underscore')
 
 userRouter.route('/login')
   .get((req, res) => {
@@ -27,7 +28,8 @@ userRouter.route('/signup')
 
 userRouter.get('/search/:query', (req, res) => {
   twitterClient.get('search/tweets', { q: req.params.query, count: 100 }, (err, data, response) => {
-    res.render('pages/results', {data: data, favorite: req.params.query})
+    var uniqueData = _.uniq(data.statuses, function(d){ return d.text })
+    res.render('pages/results', {data: data, uniqueData: uniqueData, favorite: req.params.query})
   })
 })
 
