@@ -69,7 +69,12 @@
       searchForm.addEventListener('submit', function(evt) {
         evt.preventDefault()
         var query = document.getElementById('search-input').value
-        window.location.href = '/search/' + query
+        if (query.charAt(0) == '#') {
+          var newQuery = query.replace('#', '%23')
+          window.location.href = '/search/' + newQuery
+        } else {
+          window.location.href = '/search/' + query
+        }
       })
     </script>
 
