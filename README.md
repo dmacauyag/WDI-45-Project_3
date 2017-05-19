@@ -54,7 +54,7 @@ The Twitter API was utilized for analytic results.
 
 ## ERD Diagram:
 
-##MVP:
+## MVP:
 - Implement two models: users and favorites.
 - Include sign up / log in functionality with encrypted passwords as well as validation to check for duplicate usernames and email addresses.
 - Implement complete RESTful routes for the favorites model.
