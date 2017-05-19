@@ -46,7 +46,7 @@ The Twitter API was utilized for analytic results.
 
 
 ## User Stories:
-![] (public/images/user-stories.png)
+![](public/images/user-stories.png)
 
 
 ## Wireframes:
