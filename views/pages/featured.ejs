@@ -2,62 +2,72 @@
   <br>
   <h2>FEATURED USERS</h2>
   <br>
-<div class="container">
-  <div class="row-centered">
-    <div class="col-md-2 col-md-offset-1">
-      <a class="user-data" href="/search/<%= userData[0].screen_name %>"><%= userData[0].screen_name %></a>
+
+  <div class="container">
+    <div class="row-centered">
+        <ul style="list-style: none;" id="tweet-volume-list">
+
+      <li class="featured-list">
+      <a href="/search/<%= userData[0].screen_name %>"><h3><%= userData[0].screen_name %></h3></a>
       <img src="<%= userData[0].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[0].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a class= "user-data" href="/search/<%= userData[1].screen_name %>"><%= userData[1].screen_name %></a>
+      </li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[1].screen_name %>"><h3><%= userData[1].screen_name %></h3></a>
       <img src="<%= userData[1].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[1].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a href="/search/<%= userData[2].screen_name %>"><%= userData[2].screen_name %></a>
+      <li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[2].screen_name %>"><h3><%= userData[2].screen_name %></h3></a>
       <img src="<%= userData[2].profile_image_url %>">
-     <p class="followers">FOLLOWERS</p> = <%= userData[2].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a href="/search/<%= userData[3].screen_name %>"><%= userData[3].screen_name %></a>
+      <p class="followers">FOLLOWERS</p> = <%= userData[2].followers_count %>
+      </li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[3].screen_name %>"><h3><%= userData[3].screen_name %></h3></a>
       <img src="<%= userData[3].profile_image_url %>">
-       <p class="followers">FOLLOWERS</p> = <%= userData[3].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a href="/search/<%= userData[4].screen_name %>"><%= userData[4].screen_name %></a>
+      <p class="followers">FOLLOWERS</p> = <%= userData[3].followers_count %>
+      <li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[4].screen_name %>"><h3><%= userData[4].screen_name %></h3></a>
       <img src="<%= userData[4].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[4].followers_count %>
-    </div>
-</div>
-
-<div class="row featured-chart">
-    <div class="col-md-2 col-md-offset-1">
-      <a class="featured-second" href="/search/<%= userData[5].screen_name %>"><%= userData[5].screen_name %></a>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[5].screen_name %>"><h3><%= userData[5].screen_name %></h3></a>
       <img src="<%= userData[5].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[5].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a class="featured-second" href="/search/<%= userData[6].screen_name %>"><%= userData[6].screen_name %></a>
+      </li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[6].screen_name %>"><h3><%= userData[6].screen_name %></h3></a>
       <img src="<%= userData[6].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[6].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a class="featured-second" href="/search/<%= userData[7].screen_name %>"><%= userData[7].screen_name %></a>
+      </li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[7].screen_name %>"><h3><%= userData[7].screen_name %></h3></a>
       <img src="<%= userData[7].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[7].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a class="featured-second" href="/search/<%= userData[8].screen_name %>"><%= userData[8].screen_name %></a>
+      </li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[8].screen_name %>"><h3><%= userData[8].screen_name %></h3></a>
       <img src="<%= userData[8].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[8].followers_count %>
-    </div>
-    <div class="col-md-2">
-      <a class="featured-second" href="/search/<%= userData[9].screen_name %>"><%= userData[9].screen_name %></a>
+      </li>
+      <hr>
+      <li class="featured-list">
+      <a href="/search/<%= userData[9].screen_name %>"><h3><%= userData[9].screen_name %></h3></a>
       <img src="<%= userData[9].profile_image_url %>">
       <p class="followers">FOLLOWERS</p> = <%= userData[9].followers_count %>
+      <li class="featured-list">
+      <hr>
+      <ul style="list-style: none;" id="tweet-volume-list">
     </div>
   </div>
-</div>
 
 <% include ../partials/footer %>
