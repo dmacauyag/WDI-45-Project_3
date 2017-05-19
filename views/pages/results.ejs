@@ -14,7 +14,8 @@
         <% data.statuses.forEach(function(f) { %>
           <li class="related">
             <img src="<%= f.user.profile_image_url %>">
-            <span><h4><%= f.user.name %></h4></span><br>
+            <span><h4><%= f.user.name %></h4></span>
+            <span><h5><%= f.user.location %></h5></span><br>
             <span><%= f.text %></span>
           </li>
           <hr>
@@ -32,13 +33,14 @@
       <div class="retweeted">
       <script type="text/javascript">
         var retrievedData = <%- JSON.stringify(data) %>
+        var uniqueData = <%- JSON.stringify(uniqueData) %>
         var $retweetList = $('#retweet-list')
 
-        retrievedData.statuses.sort(function(a, b) {
+        uniqueData.sort(function(a, b) {
           return parseFloat(b.retweet_count) - parseFloat(a.retweet_count)
         })
 
-        retrievedData.statuses.forEach(function(f) {
+        uniqueData.forEach(function(f) {
           if(f.retweet_count > 0) {
             var $theLi = $('<li class="retweet"><br><h4>RETWEETS</h4>')
             $theLi.append(`<span>${f.retweet_count}</span><br><br>`)
