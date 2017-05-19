@@ -14,6 +14,7 @@
 - JavaScript
 - jQuery Library
 - Bootstrap CSS framework
+- MongoDB
 
 The following npm packages were used:
 
