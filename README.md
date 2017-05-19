@@ -32,7 +32,6 @@ The following npm packages were used:
 - morgan
 - passport
 - passport-local
-- socket.io
 - twit
 - underscore
 
@@ -53,6 +52,7 @@ The Twitter API was utilized for analytic results.
 ![](public/images/wireframes.png)
 
 ## ERD Diagram:
+![](public/images/erd-diagram.png)
 
 ## MVP:
 - Implement two models: users and favorites.
