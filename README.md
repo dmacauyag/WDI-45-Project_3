@@ -61,6 +61,7 @@ The Twitter API was utilized for analytic results.
 - Users can save "favorites" that will redirect to a results page with data pulled from the Twitter API.
 - Utilize the Twitter API to query searches and retrieve trending hashtags.
 - Utilize the Twitter API to get a specific Twitter user's top tweets.
+- Create a user interface that is mobile responsive, simple and easy to navigate.
 
 ## Dream Features:
 - Advanced analytics settings with data presented in graphs and charts. 
